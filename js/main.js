@@ -1,6 +1,17 @@
 $(function() {
 
 	entranceLoad();
+	
+	$('.menu, .logo, .nav__item').click(function() {
+		openMain();
+	});
+
+	function openMain() {
+		$('.sidebar').toggleClass('collapse');
+		$('.main').toggleClass('open');
+		$('.menu').removeClass('loaded');
+		$('.main').toggleClass('active');
+	}
 
 	function entranceLoad() {
 		setTimeout(function() {
@@ -12,7 +23,7 @@ $(function() {
 	function defaultLoad() {
 		setTimeout(function() {
 			$('.menu, .logo, .author').removeClass('enter load');
-			$('.nav, .hand').addClass('enter');
+			$('.nav').addClass('enter');
 			menuLoad();
 		}, 1800)
 	}

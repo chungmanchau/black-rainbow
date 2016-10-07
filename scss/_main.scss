@@ -20,21 +20,41 @@ $color-list: $red $orange $yellow $green $sky-blue $light-blue $dark-blue $purpl
 .container {
 	height: 100%;
 	width: 100%;
+	position: relative;
 }
 
 
 // Sidebar
 .sidebar {
-	position: relative;
+	position: absolute;
+	top: 0;
+	left: 0;
+	margin-left: calc((100% - 1260px) / 2);
 	width: 100%;
 	height: 100%;
-	margin: 0 auto;
 	max-width: 1260px;
 	padding: 50px 150px 50px;
+	transition: all .2s ease-in-out;
+	overflow: hidden;
+	z-index: 10;
 	@include clearfix;
 	&.collapse {
+		left: 0;
+		transform: translateX(0);
+		margin: 0;
+		width: 50px;
+		padding: 50px 5px 50px;
+		.menu {
+			.menu__item {
+				margin-right: 4px;
+			}
+		}
+		.nav {
+			opacity: 0;
+			transform: translateX(50px);
+		}
 		.logo {
-			
+			transform: translateY(-20px) translateX(-16px) rotate(90deg);
 		}
 	}
 }
@@ -42,33 +62,34 @@ $color-list: $red $orange $yellow $green $sky-blue $light-blue $dark-blue $purpl
 .logo {
 	position: absolute;
 	bottom: 50px;
+	left: 0;
 	font-size: 30px;
-	transform: translateY(0) scale(1);
+	transform: translateY(0) translate(150px) scale(1);
+	cursor: pointer;
 	@extend .enter-text;
-	@include transition(.4s, ease-out);
-
+	transition: transform .3s ease-out, opacity .3s ease-out, rotate .3s ease-out;
 	&.enter {
 		opacity: 0;
-		transform: translateY(-430px) scale(1.3);
-		@include transition(.6s, ease-out);
+		transform: translateY(-430px) translate(150px) scale(1.3);
+		transition: transform .6s ease-out, opacity .6s ease-out, rotate .6s ease-out;
 		transition-delay: .4s;
 
 		&.load {
 			opacity: 1;
-			transform: translateY(-450px) scale(1.3);
+			transform: translateY(-450px) translate(150px) scale(1.3);
 		}
 	}
 }
 
 .menu {
 	display: flex;
-	margin: 80px 0 0;
-	padding: 20px 0;
+	margin: 0px 0 80px;
+	padding: 0;
 	list-style-type: none;
 	width: calc(100%);
 	cursor: pointer;
 	transform: translateX(0%);
-	@include transition(.6s, ease-out);
+	transition: transform .6s ease-out, opacity .6s ease-out, rotate .6s ease-out;
 	
 	@for $i from 1 through length($color-list) {
 		.menu__item {
@@ -87,7 +108,7 @@ $color-list: $red $orange $yellow $green $sky-blue $light-blue $dark-blue $purpl
 		transform-origin: top center;
 		overflow: hidden;
 		@include clearfix();
-		@include transition(.6s, ease-out);
+		transition: transform .4s ease-out, opacity .4s ease-out, rotate .4s ease-out, margin .4s ease-in-out;
 		@include entranceTransform(1, 1, 0, 0);
 
 		span {
@@ -155,7 +176,7 @@ $color-list: $red $orange $yellow $green $sky-blue $light-blue $dark-blue $purpl
 	padding: 0;
 	opacity: 0;
 	transform: translateX(-25px);
-	@include transition(.6s, ease-out);
+	transition: transform .6s ease-out, opacity .6s ease-out, rotate .6s ease-out;
 	transition-delay: .4s;
 
 	.nav__item {
@@ -173,9 +194,9 @@ $color-list: $red $orange $yellow $green $sky-blue $light-blue $dark-blue $purpl
 	}
 
 	&.enter {
-		transform: translateY(0px);
+		transform: translateX(0px);
 		opacity: 1;
-
+		transition: transform .2s ease-out, opacity .2s ease-out;
 	}
 }
 
@@ -189,10 +210,10 @@ $color-list: $red $orange $yellow $green $sky-blue $light-blue $dark-blue $purpl
 	line-height: 1.6;
 	transform: translateY(20px);
 	@extend .enter-text;
-	@include transition(.3s, ease-out);
+	transition: transform .3s ease-out, opacity .3s ease-out, rotate .3s ease-out;
 
 	&.enter {
-		@include transition(.6s, ease-out);
+		transition: transform .6s ease-out, opacity .6s ease-out, rotate .6s ease-out;
 		transition-delay: .4s;
 
 		&.load {
@@ -202,28 +223,63 @@ $color-list: $red $orange $yellow $green $sky-blue $light-blue $dark-blue $purpl
 	}
 }
 
-.hand {
-	float: right;
-	margin-top: 250px;
-	width: 50%;
-	height: 360px;
-	opacity: 0;
-	background: url(../images/hand.png) right bottom no-repeat;
-	background-size: contain;
-	transform: translateX(25px);
-	@include transition(.6s, ease-out);
-	transition-delay: .4s;
-
-	&.enter {
-		transform: translateY(0px);
-		opacity: 1;
-
-	}
+// Main
+.main {
+	position: absolute;
+	top: 0;
+	left: 50px;
+	transform: translateX(100%);
+	transition: transform .3s ease-out;
+	width: calc(100% - 50px);
+    height: 100%;
+    background: #fffff5;
+    padding: 80px;
+    &.open {
+    	transform: translateX(0);
+    	transition-delay: 0s;
+    }
+    &.active {
+    	.line {
+    		transform: scale(1);
+    	}
+    }
 }
 
+.title {
+	text-transform: uppercase;
+	font-size: 3em;
+	letter-spacing: 5px;
+	margin-bottom: 10px;
+}
+
+.sub-title {
+	margin-top: 0;
+	font-weight: bold;
+	font-size: 1.5rem;
+	color: #a5a5a5;
+	letter-spacing: 3px;
+	text-transform: uppercase;
+}
+
+.line {
+	height: 2px;
+	width: 100%;
+	background: #000;
+	transform-origin: left center;
+	transform: scale(0);
+	transition: transform .4s cubic-bezier(0.46, 0.03, 0.52, 0.96);
+}
 
 // Class Extensions
 .enter-text {
 	color: #FFF;
 	letter-spacing: 4px;
+}
+
+.title-text {
+	font-family: 'Poiret One', cursive;
+}
+
+.clearfix {
+	@include clearfix;
 }

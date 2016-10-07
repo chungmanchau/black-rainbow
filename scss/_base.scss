@@ -1,4 +1,6 @@
 @import 'https://fonts.googleapis.com/css?family=Poiret+One';
+@import 'https://fonts.googleapis.com/css?family=Roboto';
+
 
 $black: #000;
 
@@ -13,5 +15,5 @@ html, body {
 	background: $black;
 	height: 100%;
 	width: 100%;
-	font-family: 'Poiret One', cursive;
+	font-family: 'Roboto', sans-serif;
 }

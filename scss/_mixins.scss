@@ -3,7 +3,7 @@
 }
 
 @mixin transition($duration, $timinig-function) {
-	transition: transform $duration $timinig-function, opacity $duration $timinig-function;
+	transition: transform $duration $timinig-function, opacity $duration $timinig-function, rotate $duration $timinig-function;
 }
 
 @mixin clearfix {
