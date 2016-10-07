@@ -1,0 +1,15 @@
+@mixin entranceTransform($scaleX, $scaleY, $translateX, $translateY) {
+	transform: scale($scaleX, $scaleY) translate($translateX, $translateY);
+}
+
+@mixin transition($duration, $timinig-function) {
+	transition: transform $duration $timinig-function, opacity $duration $timinig-function;
+}
+
+@mixin clearfix {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
