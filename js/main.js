@@ -1,37 +1,32 @@
 $(function() {
 
-	entranceLoad();
+	initialise();
 	
-	$('.menu, .logo, .nav__item').click(function() {
-		openMain();
+	$('.sidebar').click(function() {
+		toggleSidebar();
 	});
 
-	function openMain() {
+	function toggleSidebar() {
+		$('.sidebar').toggleClass('active');
 		$('.sidebar').toggleClass('collapse');
 		$('.main').toggleClass('open');
-		$('.menu').removeClass('loaded');
 		$('.main').toggleClass('active');
 	}
 
-	function entranceLoad() {
+	function initialise() {
+		$('.sidebar').addClass('initial-state');
 		setTimeout(function() {
-			$('.menu, .logo, .author').addClass('load');
+			$('.sidebar').addClass('entering');
 			defaultLoad();
 		}, 500)	
 	}
 
 	function defaultLoad() {
 		setTimeout(function() {
-			$('.menu, .logo, .author').removeClass('enter load');
-			$('.nav').addClass('enter');
+			$('.sidebar').removeClass('initial-state entering');
+			$('.sidebar').addClass('active');
 			menuLoad();
 		}, 1800)
-	}
-
-	function menuLoad() {
-		setTimeout(function() {
-			$('.menu').addClass('loaded')
-		} ,600)
 	}
 	
 });
