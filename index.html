@@ -1,43 +1,69 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="blackRainbow">
 <head>
 	<meta charset="UTF-8">
 	<title>Black Rainbow</title>
 	<link rel="stylesheet" href="css/styles.css">
 </head>
-<body>
+<body ng-controller="MainController as main">
+	<div class="controller-status">
+		<ul>
+			<li>viewNav: {{main.viewNav}}</li>
+			<li>viewContent: {{main.viewContent}}</li>
+			<li>enterAnimation: {{main.enterAnimation}}</li>
+			<li>viewMenu: {{main.viewMenu}}</li>
+		</ul>
+	</div>
 	<div class="wrapper">
 		<div class="container">
-			<aside class="sidebar">
-				<ul class="menu">
-					<li class="menu__item red"><span>Playground</span></li>
-					<li class="menu__item orange"><span>3D Iphone</span></li>
-					<li class="menu__item yellow"><span>Devices</span></li>
-					<li class="menu__item green"><span>Color</span></li>
-					<li class="menu__item sky-blue"><span>Parallax</span></li>
-					<li class="menu__item light-blue"><span>Menu</span></li>
-					<li class="menu__item dark-blue"><span>Time Zone</span></li>
-					<li class="menu__item purple"><span>Lorem</span></li>
+			<aside class="sidebar initial-state" ng-class="main.viewContent ? 'collapse' : 'open'">
+				<div class="back-btn" ng-click="hideMenu()" ng-class="main.viewMenu ? 'open' : 'closed' " >Back</div>
+				<ul class="menu" ng-click="showMenu()" ng-class="main.viewMenu ? 'open' : 'closed' ">
+					<li ui-sref="braywealth" ui-sref-active="active" ng-click="showContent()" class="menu__item red">
+						<span>Bray Wealth</span>
+					</li>
+					<li ui-sref="color-palette" ui-sref-active="active" ng-click="showContent()" class="menu__item orange">
+						<span>Flex Box</span>
+					</li>
+					<li ui-sref="css-waves" ui-sref-active="active" ng-click="showContent()" class="menu__item yellow">
+						<span>CSS Waves</span>
+					</li>
+					<li ui-sref="hexagonal-picker" ui-sref-active="active" ng-click="showContent()" class="menu__item green">
+						<span>Hexagonal</span>
+					</li>
+					<li ui-sref="parallax-test" ui-sref-active="active" ng-click="showContent()" class="menu__item sky-blue">
+						<span>Parallax</span>
+					</li>
+					<li ui-sref="morphing-devices" ui-sref-active="active" ng-click="showContent()" class="menu__item light-blue">
+						<span>Morphing</span>
+					</li>
+					<li ui-sref="time-zone" ui-sref-active="active" ng-click="showContent()" class="menu__item dark-blue">
+						<span>Time Zone</span>
+					</li>
+					<li ui-sref="menu-concept" ui-sref-active="active" ng-click="showContent()" class="menu__item purple">
+						<span>Menu Concept</span>
+					</li>
 				</ul>
-				<ul class="nav">
-					<li class="nav__item">About</li>
-					<li class="nav__item">Services</li>
-					<li class="nav__item">Work</li>
-					<li class="nav__item">Contact</li>
+				<ul class="nav" ng-class="main.viewNav ? 'active' : 'test'">
+					<li ui-sref="about" ui-sref-active="active" ng-click="showContent()" class="nav__item">About</li>
+					<li  ui-sref="services" ui-sref-active="active" ng-click="showContent()" class="nav__item">Services</li>
+					<li ui-sref="work" ui-sref-active="active" ng-click="showContent()" class="nav__item">Work</li>
+					<li ui-sref="contact" ui-sref-active="active" ng-click="showContent()" class="nav__item">Contact</li>
 				</ul>
 				<div class="author"> Created by <br>Chung Man Chau </div>
-				<div class="logo">CMC</div>	
+				<div class="logo" ng-click="hideContent()">CMC</div>	
 			</aside>
-			<main class="main">
-				<h1 class="title">About</h1>
-				<h2 class="sub-title ">Lorem ipsum dolor sit amet.</h2>
-				<div class="line"></div>
+			<main class="main" ng-class="main.viewContent ? 'open active' : 'collapse'">
+				<ui-view></ui-view>
 			</main>
 		</div>
 	</div>
-	<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
-	<script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js'></script>
-
+	<script src="node_modules/angular/angular.min.js"></script>
+	<script src="node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>
+	<script src="node_modules/angular-animate/angular-animate.min.js"></script>
+	<script src="node_modules/jquery/dist/jquery.min.js"></script>
+	<script src="js/app.module.js"></script>
+	<script src="js/app.controller.js"></script>
 	<script src="js/main.js"></script>
 </body>
 </html>

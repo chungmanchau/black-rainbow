@@ -1,0 +1,11 @@
+{
+	"name": "black-rainbow",
+	"version": "1.0.0",
+	"dependencies": {
+		"angular": "latest",
+		"angular-animate": "latest",
+		"bootstrap": "latest",
+		"jquery": "latest",
+		"font-awesome": "latest"
+	}
+}
