@@ -47,5 +47,6 @@ Temporary Items
 .apdisk
 *.scssc
 
-./bower_components
-./node_modules
+bower_components
+node_modules
+.idea

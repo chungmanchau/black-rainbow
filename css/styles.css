@@ -356,7 +356,7 @@ html, body {
     background: #9A64DC; }
   .menu .menu__item {
     flex-grow: 0;
-    transition: all .2s ease-out;
+    transition: all .4s ease-out;
     position: relative;
     padding: 0;
     margin: 0 10px 0 0;
@@ -384,7 +384,7 @@ html, body {
   .menu.open .menu__item {
     margin-right: 0;
     flex-grow: 1;
-    transition: flex .2s ease-in; }
+    transition: flex .4s ease-in; }
     .menu.open .menu__item span {
       transition: all .1s ease-out;
       transition-delay: 0;

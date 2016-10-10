@@ -34,6 +34,7 @@
         	if(!vm.enterAnimation) {
         		vm.viewContent = true;
         	}
+
         }
 
         scope.hideContent = function() {
