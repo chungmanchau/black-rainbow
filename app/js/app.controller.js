@@ -26,34 +26,31 @@
         			$('.sidebar').removeClass('initial-state entering');
         			vm.viewNav = true;
         			vm.enterAnimation = false;
-        		}, 1500)
-        	}, 500)	
+        		}, 1500);
+        	}, 500);
         }
 
         scope.showContent = function() {
         	if(!vm.enterAnimation) {
         		vm.viewContent = true;
         	}
-
-        }
+        };
 
         scope.hideContent = function() {
         	if(!vm.enterAnimation) {
         		vm.viewContent = false;
         	}
-        }
+        };
 
         scope.showMenu = function() {
         	if(!vm.enterAnimation) {
         		vm.viewMenu = true;
-        		// vm.viewNav = false;
         	}
-        }
+        };
 
         scope.hideMenu = function() {
         	vm.viewMenu = false;
-        	// vm.viewNav = true;
-        }
+        };
 
 
     }

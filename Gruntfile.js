@@ -75,15 +75,15 @@ module.exports = function(grunt) {
 
     watch: {
       dev: {
-        files: [ 'Gruntfile.js', 'app/*.js', '*.html' ],
-        tasks: [ 'jshint', 'karma:unit', 'html2js:dist', 'concat:dist', 'clean:temp' ],
+        files: [ 'Gruntfile.js', 'app/js/*.js', '*.html' ],
+        tasks: [ 'jshint', 'html2js:dist', 'concat:dist', 'clean:temp' ],
         options: {
           atBegin: true
         }
       },
       min: {
-        files: [ 'Gruntfile.js', 'app/*.js', '*.html' ],
-        tasks: [ 'jshint', 'karma:unit', 'html2js:dist', 'concat:dist', 'clean:temp', 'uglify:dist' ],
+        files: [ 'Gruntfile.js', 'app/js/*.js', '*.html' ],
+        tasks: [ 'jshint', 'html2js:dist', 'concat:dist', 'clean:temp', 'uglify:dist' ],
         options: {
           atBegin: true
         }
@@ -114,20 +114,6 @@ module.exports = function(grunt) {
         }]
       }
     },
-    
-    karma: {
-      options: {
-        configFile: 'config/karma.conf.js'
-      },
-      unit: {
-        singleRun: true
-      },
-      
-      continuous: {
-        singleRun: false,
-        autoWatch: true
-      }
-    }
   });
   
   grunt.loadNpmTasks('grunt-contrib-jshint');
@@ -139,12 +125,9 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-html2js');
   grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-bower-task');
-  grunt.loadNpmTasks('grunt-karma');
   
-  grunt.registerTask('dev', [ 'bower', 'connect:server', 'watch:dev' ]);
-  grunt.registerTask('test', [ 'bower', 'jshint', 'karma:continuous' ]);
-  grunt.registerTask('minified', [ 'bower', 'connect:server', 'watch:min' ]);
-  grunt.registerTask('package', [ 'bower', 'jshint', 'html2js:dist', 'concat:dist', 'uglify:dist',
+  grunt.registerTask('dev', ['connect:server', 'watch:dev' ]);
+  grunt.registerTask('minified', ['connect:server', 'watch:min' ]);
+  grunt.registerTask('package', ['jshint', 'html2js:dist', 'concat:dist', 'uglify:dist',
     'clean:temp', 'compress:dist' ]);
 };
