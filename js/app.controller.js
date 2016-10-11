@@ -4,17 +4,18 @@
 	angular.module('blackRainbow')
 	.controller('MainController', MainController);
 
-	MainController.$inject = ['$scope', '$timeout'];
+	MainController.$inject = ['$scope', '$timeout', '$animate'];
 
 	/* @ngInject */
-	function MainController(scope, timeout) {
+	function MainController(scope, timeout, animate) {
 		var vm = this;
 		vm.title = 'MainController';
 		vm.viewNav = false;
 		vm.viewContent = false;
 		vm.enterAnimation = true;
 		vm.viewMenu = false;
-		activate();
+        vm.openNav = true;
+        activate();
 
         ////////////////
 
@@ -30,28 +31,36 @@
         	}, 500);
         }
 
-        scope.showContent = function() {
+        vm.showContent = function() {
         	if(!vm.enterAnimation) {
+                vm.openNav = false;
         		vm.viewContent = true;
         	}
         };
 
-        scope.hideContent = function() {
+        vm.hideContent = function() {
         	if(!vm.enterAnimation) {
         		vm.viewContent = false;
         	}
         };
 
-        scope.showMenu = function() {
+        vm.showMenu = function() {
         	if(!vm.enterAnimation) {
         		vm.viewMenu = true;
         	}
         };
 
-        scope.hideMenu = function() {
+        vm.hideMenu = function() {
         	vm.viewMenu = false;
         };
 
+        vm.toggleNav = function() {
+            vm.openNav = !vm.openNav;
+            console.log(vm.openNav)
+        }
 
-    }
+        vm.closeNav = function() {
+            vm.openNav = false;
+        }
+  }
 })();

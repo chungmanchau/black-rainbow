@@ -3,60 +3,64 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Black Rainbow</title>
+	<link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
 	<link rel="stylesheet" href="css/styles.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
 </head>
 <body ng-controller="MainController as main">
-	<div class="controller-status">
-		<ul>
-			<li>viewNav: {{main.viewNav}}</li>
-			<li>viewContent: {{main.viewContent}}</li>
-			<li>enterAnimation: {{main.enterAnimation}}</li>
-			<li>viewMenu: {{main.viewMenu}}</li>
-		</ul>
-	</div>
 	<div class="wrapper">
-		<div class="container">
-			<aside class="sidebar initial-state" ng-class="main.viewContent ? 'collapse' : 'open'">
-				<div class="back-btn" ng-click="hideMenu()" ng-class="main.viewMenu ? 'open' : 'closed' " >Back</div>
-				<ul class="menu" ng-click="showMenu()" ng-class="main.viewMenu ? 'open' : 'closed' ">
-					<li ui-sref="braywealth" ui-sref-active="active" ng-click="showContent()" class="menu__item red">
-						<span>Bray Wealth</span>
-					</li>
-					<li ui-sref="color-palette" ui-sref-active="active" ng-click="showContent()" class="menu__item orange">
-						<span>Flex Box</span>
-					</li>
-					<li ui-sref="css-waves" ui-sref-active="active" ng-click="showContent()" class="menu__item yellow">
-						<span>CSS Waves</span>
-					</li>
-					<li ui-sref="hexagonal-picker" ui-sref-active="active" ng-click="showContent()" class="menu__item green">
-						<span>Hexagonal</span>
-					</li>
-					<li ui-sref="parallax-test" ui-sref-active="active" ng-click="showContent()" class="menu__item sky-blue">
-						<span>Parallax</span>
-					</li>
-					<li ui-sref="morphing-devices" ui-sref-active="active" ng-click="showContent()" class="menu__item light-blue">
-						<span>Morphing</span>
-					</li>
-					<li ui-sref="time-zone" ui-sref-active="active" ng-click="showContent()" class="menu__item dark-blue">
-						<span>Time Zone</span>
-					</li>
-					<li ui-sref="menu-concept" ui-sref-active="active" ng-click="showContent()" class="menu__item purple">
-						<span>Menu Concept</span>
-					</li>
-				</ul>
-				<ul class="nav" ng-class="main.viewNav ? 'active' : 'test'">
-					<li ui-sref="about" ui-sref-active="active" ng-click="showContent()" class="nav__item">About</li>
-					<li  ui-sref="services" ui-sref-active="active" ng-click="showContent()" class="nav__item">Services</li>
-					<li ui-sref="work" ui-sref-active="active" ng-click="showContent()" class="nav__item">Work</li>
-					<li ui-sref="contact" ui-sref-active="active" ng-click="showContent()" class="nav__item">Contact</li>
-				</ul>
-				<div class="author"> Created by <br>Chung Man Chau </div>
-				<div class="logo" ng-click="hideContent()">CMC</div>	
-			</aside>
-			<main class="main" ng-class="main.viewContent ? 'open active' : 'collapse'">
-				<ui-view></ui-view>
-			</main>
-		</div>
+		<aside class="sidebar initial-state" ng-class="main.viewContent ? 'collapse' : 'open'">
+			<div class="logo-text" ng-click="hideContent()">CMC</div>	
+			<div class="logo" ng-click="hideContent()"><img src="images/logo_white.png" alt=""></div>	
+			<i class="fa fa-bars toggle-open" ng-click="main.toggleNav()" aria-hidden="true"></i>
+			<nav class="nav" ng-show="main.openNav">
+				<div class="nav__content">
+					<ul class="nav--list" ng-class="main.viewNav || main.openNav ? 'active' : 'test'">
+						<li ui-sref="about" ui-sref-active="active" ng-click="main.showContent()">About</li>
+						<li  ui-sref="services" ui-sref-active="active" ng-click="main.showContent()">Services</li>
+						<li ui-sref="work" ui-sref-active="active" ng-click="main.showContent()">Work</li>
+						<li ui-sref="contact" ui-sref-active="active" ng-click="main.showContent()">Contact</li>
+					</ul>
+					<ul class="nav--social">
+						<li><a href="https://www.linkedin.com/in/chungmanchau"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a></li>
+						<li><a href="https://twitter.com/chungmanchau"><i class="fa fa-twitter-square" aria-hidden="true"></i></a></li>
+						<li><a href="https://www.facebook.com/chungman93"><i class="fa fa-facebook-square" aria-hidden="true"></i></a></li>
+					</ul>
+				</div>
+			</nav>
+			<ul class="menu" ng-click="showMenu()" ng-class="main.viewMenu ? 'open' : 'closed' ">
+				<li ui-sref="braywealth" ui-sref-active="active" ng-click="main.showContent()" class="menu__item red">
+					<span>Bray Wealth</span>
+				</li>
+				<li ui-sref="color-palette" ui-sref-active="active" ng-click="main.showContent()" class="menu__item orange">
+					<span>Flex Box</span>
+				</li>
+				<li ui-sref="css-waves" ui-sref-active="active" ng-click="main.showContent()" class="menu__item yellow">
+					<span>CSS Waves</span>
+				</li>
+				<li ui-sref="hexagonal-picker" ui-sref-active="active" ng-click="main.showContent()" class="menu__item green">
+					<span>Hexagonal</span>
+				</li>
+				<li ui-sref="parallax-test" ui-sref-active="active" ng-click="main.showContent()" class="menu__item sky-blue">
+					<span>Parallax</span>
+				</li>
+				<li ui-sref="morphing-devices" ui-sref-active="active" ng-click="main.showContent()" class="menu__item light-blue">
+					<span>Morphing</span>
+				</li>
+				<li ui-sref="time-zone" ui-sref-active="active" ng-click="main.showContent()" class="menu__item dark-blue">
+					<span>Time Zone</span>
+				</li>
+				<li ui-sref="menu-concept" ui-sref-active="active" ng-click="main.showContent()" class="menu__item purple">
+					<span>Menu Concept</span>
+				</li>
+			</ul>
+			<div class="author"> Created by <br>Chung Man Chau </div>
+		</aside>
+		<main class="main" ng-class="main.viewContent ? 'open active' : 'collapse'">
+			<ui-view></ui-view>
+		</main>
+
 	</div>
 	<script src="node_modules/angular/angular.min.js"></script>
 	<script src="node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>

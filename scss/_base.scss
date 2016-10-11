@@ -2,18 +2,60 @@
 @import 'https://fonts.googleapis.com/css?family=Roboto';
 
 
-$black: #000;
-
 html {
-  box-sizing: border-box;
-}
-*, *:before, *:after {
-  box-sizing: inherit;
-}
-
-html, body {
-	background: $black;
+	box-sizing: border-box;
 	height: 100%;
 	width: 100%;
+	font-size: 62.5%;
+}
+
+body {
+	background: $light-grey;
+	height: 100%;
 	font-family: 'Roboto', sans-serif;
+	line-height: 1.6;
+}
+
+*, *:before, *:after {
+	box-sizing: inherit;
+}
+
+ul, li {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+
+
+
+.wrapper {
+	height: 100%;
+	width: 100%;
+	overflow: hidden;
+	margin: 0 auto
+}
+
+// .container {
+// 	height: 100%;
+// 	width: 100%;
+// 	position: relative;
+// }
+
+
+
+@media (min-width: $screen-lg) {
+	
+}
+
+@media (min-width: $screen-md) {
+	
+}
+
+@media (min-width: $screen-sm) {
+	
+}
+
+@media (min-width: $screen-xs) {
+
+	
 }
